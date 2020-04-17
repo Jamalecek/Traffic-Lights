@@ -42,32 +42,33 @@ void setup() {
   digitalWrite(dontWalk, HIGH);
 }
 
-void westPass() {
+void blinkYellow(int yellow, int blinkTime) {
   for ( int i = 0; i < 5; i++ )        // blink yellow light
   {
-    digitalWrite(westYellow, LOW);
-    delay(yellowBlinkTime);
-    digitalWrite(westYellow, HIGH);
-    delay(yellowBlinkTime);
+    digitalWrite(yellow, LOW);
+    delay(blinkTime);
+    digitalWrite(yellow, HIGH);
+    delay(blinkTime);
+    return 0;
   }
+}
+
+void westPass() {
+  blinkYellow(westYellow, yellowBlinkTime);
   digitalWrite(westYellow, LOW);
   digitalWrite(westRed, LOW);          // change west-facing lights from red to green
   digitalWrite(westGreen, HIGH);
   return 0;
 }
+
 void eastPass() {
-  for ( int i = 0 ; i < 5 ; i++ )      // blink yellow light
-  {
-    digitalWrite(eastYellow, LOW);
-    delay(yellowBlinkTime);
-    digitalWrite(eastYellow, HIGH);
-    delay(yellowBlinkTime);
-  }
+  blinkYellow(eastYellow, yellowBlinkTime);
   digitalWrite(eastYellow, LOW);
   digitalWrite(eastRed, LOW);          // change east-facing lights from red to green
   digitalWrite(eastGreen, HIGH);
   return 0;
 }
+
 void westStop(int flowTime, int changeDelay) {
   delay(flowTime);                     // give time for traffic to flow
   digitalWrite(westGreen, LOW);        // change west lights from green to yellow to red
@@ -78,6 +79,7 @@ void westStop(int flowTime, int changeDelay) {
   delay(changeDelay);
   return 0;
 }
+
 void eastStop(int flowTime, int changeDelay) {
   delay(flowTime);                     // give time for traffic to flow
   digitalWrite(eastGreen, LOW);        // change east-facing lights from green to yellow to red
@@ -88,8 +90,8 @@ void eastStop(int flowTime, int changeDelay) {
   delay(changeDelay);
   return 0;
 }
+
 void walkFunction(int walkTime) {
- 
   delay(flowTime);                      //walk sign on then off
   digitalWrite(dontWalk, LOW);
   digitalWrite(walk, HIGH);
