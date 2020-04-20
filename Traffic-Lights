@@ -57,7 +57,6 @@ void westPass() {
   digitalWrite(westYellow, LOW);
   digitalWrite(westRed, LOW);          // change west-facing lights from red to green
   digitalWrite(westGreen, HIGH);
-  return 0;
 }
 
 void eastPass() {
@@ -65,7 +64,6 @@ void eastPass() {
   digitalWrite(eastYellow, LOW);
   digitalWrite(eastRed, LOW);          // change east-facing lights from red to green
   digitalWrite(eastGreen, HIGH);
-  return 0;
 }
 
 void westStop(int flowTime, int changeDelay) {
@@ -76,7 +74,6 @@ void westStop(int flowTime, int changeDelay) {
   digitalWrite(westYellow, LOW);
   digitalWrite(westRed, HIGH);
   delay(changeDelay);
-  return 0;
 }
 
 void eastStop(int flowTime, int changeDelay) {
@@ -87,7 +84,6 @@ void eastStop(int flowTime, int changeDelay) {
   digitalWrite(eastYellow, LOW);
   digitalWrite(eastRed, HIGH);
   delay(changeDelay);
-  return 0;
 }
 
 void walkFunction(int walkTime) {
@@ -99,7 +95,6 @@ void walkFunction(int walkTime) {
   Serial.println("Don't Walk");
   digitalWrite(walk, LOW);
   digitalWrite(dontWalk, HIGH);
-  return 0;
 }
 
 void loop() {
