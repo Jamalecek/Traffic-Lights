@@ -100,13 +100,13 @@ void walkFunction(int walkTime) {
 void loop() {
   if ( digitalRead(walkButton) == HIGH ) {
     if ( trafficWest != true ) {
-      eastStop(5000, 1000);
-      walkFunction(2000);
+      eastStop(flowTime, changeDelay);
+      walkFunction(walkTime);
       eastPass();
     }
     if (trafficWest == true  ) {
-      westStop(5000, 1000);
-      walkFunction(2000);
+      westStop(flowTime, changeDelay);
+      walkFunction(walkTime);
       westPass();
     }
   }
@@ -115,7 +115,7 @@ void loop() {
     if ( trafficWest != true )             // only continue if traffic flowing in the opposite (east) direction
     {
       trafficWest = true;                  // change traffic flow flag to west>east
-      eastStop(5000, 1000);
+      eastStop(flowTime, changeDelay);
       westPass();
     }
   }
@@ -124,7 +124,7 @@ void loop() {
     if ( trafficWest == true )             // only continue if traffic flow is in the opposite (west) direction
     {
       trafficWest = false;                 // change traffic flow flag to east>west
-      westStop(5000, 1000);
+      westStop(flowTime, changeDelay);
       eastPass();
     }
   }
